@@ -16,7 +16,6 @@ class CommentairesType extends AbstractType
     {
         $builder_com
             ->add('texte')
-            ->add('auteur')
         ;
     }
     

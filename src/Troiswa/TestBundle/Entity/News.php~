@@ -48,9 +48,8 @@ class News
     /**
      * @var string
      *
-     * @ORM\Column(name="auteur", type="string", length=255)
-     * @Assert\Length(min=5, max=100, minMessage="L'auteur doit avoir un nom d'au moins {{ limit }} caractères")
-     * @Assert\Regex("/^[a-zA-Z -]{5,}$/", message="Auteur invalide")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="news")
+     * @ORM\JoinColumn(name="auteur_id", referencedColumnName="id")
      */
     private $auteur;
 
@@ -67,7 +66,7 @@ class News
     private $category;
 
     /**
-     *@ORM\OneToMany(targetEntity="Commentaire", mappedBy="news")
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="news")
      */
     private $commentaires;
     

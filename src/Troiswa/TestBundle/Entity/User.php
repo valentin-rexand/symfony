@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
+
 /**
  * User
  *
@@ -61,6 +63,18 @@ class User implements UserInterface, \Serializable, EquatableInterface
     private $roles;
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="auteur")
+     */
+    private $commentaires;
+
+    /**
+     *
+     *@ORM\OneToMany(targetEntity="News", mappedBy="auteur")
+     */
+    private $news;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
@@ -70,6 +84,15 @@ class User implements UserInterface, \Serializable, EquatableInterface
      * )
      */
     private $mail;
+
+
+    public function __construct()
+    {
+        $this->salt=md5(uniqid(null, true));
+        $this->roles=new ArrayCollection();
+        $this->commentaires=new ArrayCollection();
+        $this->news=new ArrayCollection();
+    }
 
     public function eraseCredentials()
     {
@@ -171,11 +194,6 @@ class User implements UserInterface, \Serializable, EquatableInterface
         return $this->salt;
     }
 
-    public function __construct()
-    {
-        $this->salt=md5(uniqid(null, true));
-        $this->roles=new ArrayCollection();
-    }
 
     /**
      * Set nom
@@ -259,5 +277,71 @@ class User implements UserInterface, \Serializable, EquatableInterface
     public function getRoles()
     {
         return $this->roles->toArray();
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \Troiswa\TestBundle\Entity\Commentaire $commentaires
+     * @return User
+     */
+    public function addCommentaire(\Troiswa\TestBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \Troiswa\TestBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\Troiswa\TestBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Add news
+     *
+     * @param \Troiswa\TestBundle\Entity\News $news
+     * @return User
+     */
+    public function addNews(\Troiswa\TestBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \Troiswa\TestBundle\Entity\News $news
+     */
+    public function removeNews(\Troiswa\TestBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }

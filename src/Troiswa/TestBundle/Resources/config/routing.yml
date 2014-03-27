@@ -1,4 +1,4 @@
-# TEST
+# TEST ROUTING
 troiswa_test_homepage:
     pattern:  /hello/{name}/
     defaults: { _controller: TroiswaTestBundle:Default:index }
@@ -8,7 +8,7 @@ troiswa_test_index:
     defaults: { _controller: TroiswaTestBundle:Default:accueil }
 
 
-# NEWS
+# NEWS ROUTING
 troiswa_test_create:
     pattern: /admin/news/create/
     defaults: { _controller: TroiswaTestBundle:News:create }
@@ -29,7 +29,7 @@ TroiswaTestBundle_news2:
         resource: "@TroiswaTestBundle/Resources/config/routing/news2.yml"
         prefix:   /news2
 
-# CATEGORIES
+# CATEGORIES ROUTING
 troiswa_test_categories:
     pattern: /news/categories/
     defaults: { _controller: TroiswaTestBundle:Category:liste }
@@ -55,7 +55,7 @@ troiswa_test_news_get:
     pattern: /news/{id}.html
     defaults: { _controller: TroiswaTestBundle:News:get }
 
-# USER
+# USER ROUTING
 troiswa_test_user_liste:
     pattern: /user/liste
     defaults: { _controller: TroiswaTestBundle:User:liste }
@@ -82,15 +82,11 @@ troiswa_test_user_delete:
     pattern: /admin/user/{id}/delete/
     defaults: { _controller: TroiswaTestBundle:User:delete }
 
-troiswa_test_user_password:
-    pattern: /admin/user/{id}/password/
-    defaults: { _controller: TroiswaTestBundle:User:password }
-
 troiswa_test_user_get:
     pattern: /user/
     defaults: { _controller: TroiswaTestBundle:User:get }
 
-# ROLE
+# ROLE ROUTING
 troiswa_test_role_liste:
     pattern: /admin/role/liste
     defaults: { _controller: TroiswaTestBundle:Role:liste }

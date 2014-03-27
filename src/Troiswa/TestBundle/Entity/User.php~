@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
+
 /**
  * User
  *
@@ -61,6 +63,18 @@ class User implements UserInterface, \Serializable, EquatableInterface
     private $roles;
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="auteur")
+     */
+    private $commentaires;
+
+    /**
+     *
+     *@ORM\OneToMany(targetEntity="News", mappedBy="auteur")
+     */
+    private $news;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
@@ -70,6 +84,15 @@ class User implements UserInterface, \Serializable, EquatableInterface
      * )
      */
     private $mail;
+
+
+    public function __construct()
+    {
+        $this->salt=md5(uniqid(null, true));
+        $this->roles=new ArrayCollection();
+        $this->commentaires=new ArrayCollection();
+        $this->news=new ArrayCollection();
+    }
 
     public function eraseCredentials()
     {
@@ -171,11 +194,6 @@ class User implements UserInterface, \Serializable, EquatableInterface
         return $this->salt;
     }
 
-    public function __construct()
-    {
-        $this->salt=md5(uniqid(null, true));
-        $this->roles=new ArrayCollection();
-    }
 
     /**
      * Set nom

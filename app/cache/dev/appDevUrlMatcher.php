@@ -354,15 +354,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_user_delete')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\UserController::deleteAction',));
             }
 
-            // troiswa_test_user_password
-            if (preg_match('#^/admin/user/(?P<id>[^/]++)/password/?$#s', $pathinfo, $matches)) {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'troiswa_test_user_password');
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_user_password')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\UserController::passwordAction',));
-            }
-
         }
 
         // troiswa_test_user_get

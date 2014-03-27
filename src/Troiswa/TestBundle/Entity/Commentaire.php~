@@ -40,9 +40,8 @@ class Commentaire
     /**
      * @var string
      *
-     * @ORM\Column(name="auteur", type="string", length=255)
-     * @Assert\Length(min=5, max=100, minMessage="L'auteur doit avoir un nom d'au moins {{ limit }} caractères")
-     * @Assert\Regex("/^[a-zA-Z -]{5,}$/", message="Auteur invalide")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="auteur_id", referencedColumnName="id")
      */
     private $auteur;
 

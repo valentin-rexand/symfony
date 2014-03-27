@@ -9,6 +9,10 @@
 		Auteur : <span class="color_news">{{news.auteur}}</span><br/>
 		Catégorie : <span class="color_news">{{news.category}}</span></em></p>
 		<p>{{news.texte}}</p>
+		{% if (is_granted ('ROLE_ADMIN')) or (is_granted ('ROLE_MODO')) %}
+		<a href="{{ path('troiswa_test_news_update', {'id': news.id}) }}">Modifier</a> 
+		<a href="{{ path('troiswa_test_news_delete', {'id': news.id}) }}">Supprimer</a>
+		{% endif %}
 		<h3>Commentaires</h3>
 		<ul>
 			<li>

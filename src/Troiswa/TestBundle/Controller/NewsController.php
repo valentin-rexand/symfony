@@ -24,6 +24,8 @@ class NewsController extends Controller
             'action'=>$this->generateUrl('troiswa_test_create'),
             'method'=> 'PUT'
             ))->add('valider', 'submit', array('label' => 'créer'));
+        $user=$this->getUser();
+        $news->setAuteur($user);
         $form->handleRequest($request);
         if ($form->isValid()){
             $news->setDate(new \Datetime());
@@ -52,14 +54,17 @@ class NewsController extends Controller
     {
         $builder_com=new CommentairesType();
         $commentaire=new Commentaire();
+        $user=$this->getUser();
+        $commentaire->setAuteur($user);
         $repo=$this->getDoctrine()->getRepository('TroiswaTestBundle:News');
         $news=$repo->findOneBySlug($id);
         if(!$news){
             throw $this->createNotFoundException('La news est introuvable');
         }
         $form=null;
-        $user=$this->get('security.context')->isGranted('ROLE_ADMIN');
-        if($user){
+        $admin=$this->get('security.context')->isGranted('ROLE_ADMIN');
+        $user=$this->get('security.context')->isGranted('ROLE_USER');
+        if($admin || $user){
             $form=$this->createForm($builder_com, $commentaire, array(
                 'action'=>$this->generateUrl('troiswa_test_news_get', array('id' => $news->getSlug())),
                 'method'=> 'PUT'

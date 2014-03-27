@@ -41,12 +41,12 @@ class __TwigTemplate_736987ba969d2cb41957e065042317ebeecbb522cd0911ed8cd0ed15549
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
             // line 7
             echo "\t<div class=\"news\">
-\t<p><span class=\"color_news\">username :</span> ";
+\t<p><span class=\"color_news\">Username :</span> ";
             // line 8
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username"), "html", null, true);
-            echo " </p><p><span class=\"color_news\">nom :</span> ";
+            echo " </p><p><span class=\"color_news\">Nom :</span> ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "nom"), "html", null, true);
-            echo " <span class=\"color_news\">email :</span> ";
+            echo " <span class=\"color_news\">Email :</span> ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "mail"), "html", null, true);
             echo "</p>
 \t<a href=\"";
