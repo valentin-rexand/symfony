@@ -1,0 +1,12 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:Role:liste{% endblock %}
+
+{% block content %}
+	<div class="news">
+	{% for roles in role %}
+	<p>{{ roles.nom }} {{ roles.role }}</p><p><a href="{{ path('troiswa_test_role_update', {'id': roles.id}) }}">Modifier</a> <a href="{{ path('troiswa_test_role_delete', {'id': roles.id}) }}">Supprimer</a></p>
+	{% endfor %}
+	<p><a href="{{ path('troiswa_test_role_create') }}">Créer un role</a></p>
+	</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:Category:get{% endblock %}
+
+{% block content %}
+	<div class="news">
+		<p><em>catégorie : <span class="color_news">{{category.nom}}</span><br/>
+		description : <span class="color_news">{{category.description}}</span></em></p>
+	</div>
+	{#afficher les news correspondantes à la categorie#}
+	{% for item in category.news %}
+		{{ include ('TroiswaTestBundle:Default:news.html.twig', {'news': item}) }}
+	{% endfor %}
+	{% endblock %}

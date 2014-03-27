@@ -1,0 +1,13 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:News:categories{% endblock %}
+
+{% block content %}
+	{% for list in category_list %}
+		<div class="news">
+			<p><em>catégorie : <span class="color_news">{{list.nom}}</span><br/>
+			description : <span class="color_news">{{list.description}}</span></em></p>
+			<p>{{news.texte}}</p>
+		</div>
+	{% endfor %}
+{% endblock %}

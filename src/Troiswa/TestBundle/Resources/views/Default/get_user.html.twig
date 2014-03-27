@@ -1,0 +1,5 @@
+{% if user %}
+<p>Bonjour {{ user.nom }} <a href="{{ path('troiswa_test_user_logout') }}">Déconnexion</a></p>
+{% else %}
+<a href="{{ path('troiswa_test_user_login') }}">Connexion</a>
+{% endif %}

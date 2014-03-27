@@ -1,0 +1,13 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:User:liste{% endblock %}
+
+{% block content %}
+	{% for user in users %}
+	<div class="news">
+	<p><span class="color_news">Username :</span> {{ user.username }} </p><p><span class="color_news">Nom :</span> {{ user.nom }} <span class="color_news">Email :</span> {{ user.mail }}</p>
+	<a href="{{ path('troiswa_test_user_update', {'id': user.id}) }}">Modifier</a>
+	<a href="{{ path('troiswa_test_user_delete', {'id': user.id}) }}">supprimer</a>
+	</div>
+	{% endfor %}
+{% endblock %}

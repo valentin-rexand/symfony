@@ -1,0 +1,10 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:User:login{% endblock %}
+
+{% block content %}
+	<div class="news">
+	{% if error %}<p>{{ error.message }}</p>{% endif %}
+	{{ form(form) }}
+	</div>
+{% endblock %}

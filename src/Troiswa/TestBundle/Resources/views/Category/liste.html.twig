@@ -1,0 +1,21 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:Category:liste{% endblock %}
+
+{% block content %}
+	{% for list in category_list %}
+		<div class="news">
+			<p><em>Catégorie : <span class="color_news">{{list.nom}}</span><br/>
+			Description : <span class="color_news">{{list.description}}</span></em></p>
+			{% if is_granted ('ROLE_ADMIN') %}
+			<a href="{{ path('troiswa_test_category_update', {'id':list.id}) }}">modifier</a>
+			<a href="{{ path('troiswa_test_category_delete', {'id':list.id}) }}">supprimer</a>
+			{% endif %}
+		</div>
+	{% endfor %}
+	{% if is_granted ('ROLE_ADMIN') %}
+	<div class="news ajout">
+		<a href="{{ path('troiswa_test_category_create')}}">ajouter une catégorie</a>
+	</div>
+	{% endif %}
+{% endblock %}

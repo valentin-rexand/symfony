@@ -1,0 +1,24 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:News:liste{% endblock %}
+
+{% block content %}
+	{% for news in news_list %}
+		<div class="news">
+			<a href="{{ path('troiswa_test_news_get', {'id': news.slug}) }}"><h2>{{news.titre}}</h2></a>
+			<p><em>date : <span class="color_news">{{news.date | date('d/m/Y')}}</span><br/>
+			auteur : <span class="color_news">{{news.auteur}}</span></em></p>
+			<p>{{news.texte}}</p>
+			{% if is_granted ('ROLE_ADMIN') %}
+			<a href="{{ path('troiswa_test_news_update', {'id': news.id}) }}">modifier</a>
+			<a href="{{ path('troiswa_test_news_delete', {'id': news.id}) }}">supprimer</a>
+			{% endif %}
+		</div>
+	{% endfor %}
+	{% if is_granted ('ROLE_ADMIN') %}
+	<div class="news ajout">
+		<a href="{{ path('troiswa_test_create')}}">ajouter news</a>
+	</div>
+	{% endif %}
+{% endblock %}
+{# ceci est un commentaire #}

@@ -1,0 +1,9 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block content %}
+	<h1 class="title">coucou</h1>
+	{% for obj in objets %}
+		<p>id : {{obj.id}}<br/>
+		   nom : {{obj.nom}}</p>
+	{% endfor %}
+{% endblock %}

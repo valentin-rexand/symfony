@@ -1,0 +1,108 @@
+# TEST
+troiswa_test_homepage:
+    pattern:  /hello/{name}/
+    defaults: { _controller: TroiswaTestBundle:Default:index }
+
+troiswa_test_index:
+    pattern:  /
+    defaults: { _controller: TroiswaTestBundle:Default:accueil }
+
+
+# NEWS
+troiswa_test_create:
+    pattern: /admin/news/create/
+    defaults: { _controller: TroiswaTestBundle:News:create }
+
+troiswa_test_news_liste:
+    pattern: /news/
+    defaults: { _controller: TroiswaTestBundle:News:liste }
+
+troiswa_test_news_update:
+    pattern: /admin/news/{id}/update/
+    defaults: { _controller: TroiswaTestBundle:News:update }
+
+troiswa_test_news_delete:
+    pattern: /admin/news/{id}/delete/
+    defaults: { _controller: TroiswaTestBundle:News:delete }
+
+TroiswaTestBundle_news2:
+        resource: "@TroiswaTestBundle/Resources/config/routing/news2.yml"
+        prefix:   /news2
+
+# CATEGORIES
+troiswa_test_categories:
+    pattern: /news/categories/
+    defaults: { _controller: TroiswaTestBundle:Category:liste }
+
+troiswa_test_category_update:
+    pattern: /admin/news/category/{id}/update/
+    defaults: { _controller: TroiswaTestBundle:Category:update }
+
+troiswa_test_category_create:
+    pattern: /admin/news/category/create/
+    defaults: { _controller: TroiswaTestBundle:Category:create }
+
+troiswa_test_category:
+    pattern: /news/category/{id}.html
+    defaults: { _controller: TroiswaTestBundle:Category:get }
+
+troiswa_test_category_delete:
+    pattern: /admin/news/category/{id}/delete/
+    defaults: { _controller: TroiswaTestBundle:Category:delete }
+
+# news_get, placé après pour etre fonctionnel
+troiswa_test_news_get:
+    pattern: /news/{id}.html
+    defaults: { _controller: TroiswaTestBundle:News:get }
+
+# USER
+troiswa_test_user_liste:
+    pattern: /user/liste
+    defaults: { _controller: TroiswaTestBundle:User:liste }
+
+troiswa_test_user_inscript:
+    pattern: /news/inscript/
+    defaults: { _controller: TroiswaTestBundle:User:inscript }
+
+troiswa_test_user_login:
+    pattern: /login
+    defaults: { _controller: TroiswaTestBundle:User:login }
+
+troiswa_test_user_login_check:
+    pattern: /login_check
+
+troiswa_test_user_logout:
+    pattern: /logout
+
+troiswa_test_user_update:
+    pattern: /admin/user/{id}/update
+    defaults: { _controller: TroiswaTestBundle:User:update }
+
+troiswa_test_user_delete:
+    pattern: /admin/user/{id}/delete/
+    defaults: { _controller: TroiswaTestBundle:User:delete }
+
+troiswa_test_user_password:
+    pattern: /admin/user/{id}/password/
+    defaults: { _controller: TroiswaTestBundle:User:password }
+
+troiswa_test_user_get:
+    pattern: /user/
+    defaults: { _controller: TroiswaTestBundle:User:get }
+
+# ROLE
+troiswa_test_role_liste:
+    pattern: /admin/role/liste
+    defaults: { _controller: TroiswaTestBundle:Role:liste }
+
+troiswa_test_role_create:
+    pattern: /admin/role/create/
+    defaults: { _controller: TroiswaTestBundle:Role:create }
+
+troiswa_test_role_update:
+    pattern: /admin/role/{id}/update/
+    defaults: { _controller: TroiswaTestBundle:Role:update }
+
+troiswa_test_role_delete:
+    pattern: /admin/role/{id}/delete/
+    defaults: { _controller: TroiswaTestBundle:Role:delete }

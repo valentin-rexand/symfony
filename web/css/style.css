@@ -1,0 +1,57 @@
+h1{
+	text-align: center;
+	color: #302E32;
+}
+ul, li{
+	list-style-type: none;
+}
+.sidebar{
+	text-align: center;
+	background-color: #302E32;
+	border-radius: 10px;
+	color: white;
+	max-width: 500px;
+	width: auto;
+	margin: 0 auto;
+}
+.sidebar ul{
+	padding: 0;
+	display: inline-block;
+}
+.sidebar li{
+	list-style-type: none;
+	display: inline;
+}
+.sidebar a{
+	color: white;
+	padding: 0 5px 0 5px;
+}
+a{
+	color: #302E32;
+	text-decoration: none;
+}
+.color_news{
+	color: #302E32;
+}
+.error{
+	color: #302E32;
+}
+.error_p{
+	color: gray;
+}
+div.error{
+	width: 250px;
+	height: auto;
+	margin: 50px auto;
+	position: relative;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px;
+}
+.flash-notice{
+	text-align: center;
+}

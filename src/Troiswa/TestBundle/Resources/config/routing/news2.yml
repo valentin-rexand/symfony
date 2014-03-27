@@ -1,0 +1,30 @@
+news2:
+    pattern:  /
+    defaults: { _controller: "TroiswaTestBundle:News2:index" }
+
+news2_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TroiswaTestBundle:News2:show" }
+
+news2_new:
+    pattern:  /new
+    defaults: { _controller: "TroiswaTestBundle:News2:new" }
+
+news2_create:
+    pattern:  /create
+    defaults: { _controller: "TroiswaTestBundle:News2:create" }
+    requirements: { _method: post }
+
+news2_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TroiswaTestBundle:News2:edit" }
+
+news2_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TroiswaTestBundle:News2:update" }
+    requirements: { _method: post|put }
+
+news2_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TroiswaTestBundle:News2:delete" }
+    requirements: { _method: post|delete }

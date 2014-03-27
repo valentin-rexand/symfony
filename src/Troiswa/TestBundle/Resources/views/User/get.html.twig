@@ -1,0 +1,11 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:Role:liste{% endblock %}
+
+{% block content %}
+	<div class="news">
+	<p><span class="color_news">Username :</span> {{ user.username }} </p><p><span class="color_news">Nom :</span> {{ user.nom }}</p><p><span class="color_news">Email :</span> {{ user.mail }}</p>
+	<p><a href="{{ path('troiswa_test_user_update', {'id': user.id}) }}">Modifier mes informations</a></p>
+	<p><a href="{{ path('troiswa_test_user_delete', {'id': user.id}) }}">Supprimer mon compte</a></p>
+	</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: 3wa
+    database_user: 3wa
+    database_password: berezina
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: a0866d4495a6eb97513d6fcf3d5c6f12
+    database_path: null
