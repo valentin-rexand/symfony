@@ -48,6 +48,8 @@ class __TwigTemplate_736987ba969d2cb41957e065042317ebeecbb522cd0911ed8cd0ed15549
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "nom"), "html", null, true);
             echo " <span class=\"color_news\">Email :</span> ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "mail"), "html", null, true);
+            echo " <span class=\"color_news\">Roles :</span> ";
+            echo twig_escape_filter($this->env, twig_join_filter($this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "roles"), ","), "html", null, true);
             echo "</p>
 \t<a href=\"";
             // line 9
@@ -77,6 +79,6 @@ class __TwigTemplate_736987ba969d2cb41957e065042317ebeecbb522cd0911ed8cd0ed15549
 
     public function getDebugInfo()
     {
-        return array (  58 => 10,  54 => 9,  46 => 8,  43 => 7,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  60 => 10,  56 => 9,  46 => 8,  43 => 7,  38 => 6,  35 => 5,  29 => 3,);
     }
 }

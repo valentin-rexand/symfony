@@ -40,6 +40,10 @@ class __TwigTemplate_aa5c8a98e15a2a8d64b131f7a9390b5b8ab59bcca9ca95ba5754b045a4e
         // line 7
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
         echo "
+\t<p><a href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("troiswa_test_password", array("id" => $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "id"))), "html", null, true);
+        echo "\">Modifier password</a></p>
 \t</div>
 ";
     }
@@ -56,6 +60,6 @@ class __TwigTemplate_aa5c8a98e15a2a8d64b131f7a9390b5b8ab59bcca9ca95ba5754b045a4e
 
     public function getDebugInfo()
     {
-        return array (  41 => 7,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  45 => 8,  41 => 7,  38 => 6,  35 => 5,  29 => 3,);
     }
 }

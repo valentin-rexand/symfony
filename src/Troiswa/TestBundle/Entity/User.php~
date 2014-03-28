@@ -278,4 +278,70 @@ class User implements UserInterface, \Serializable, EquatableInterface
     {
         return $this->roles->toArray();
     }
+
+    /**
+     * Add commentaires
+     *
+     * @param \Troiswa\TestBundle\Entity\Commentaire $commentaires
+     * @return User
+     */
+    public function addCommentaire(\Troiswa\TestBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \Troiswa\TestBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\Troiswa\TestBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Add news
+     *
+     * @param \Troiswa\TestBundle\Entity\News $news
+     * @return User
+     */
+    public function addNews(\Troiswa\TestBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \Troiswa\TestBundle\Entity\News $news
+     */
+    public function removeNews(\Troiswa\TestBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
 }

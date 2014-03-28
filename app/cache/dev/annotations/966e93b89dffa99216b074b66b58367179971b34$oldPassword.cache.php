@@ -1,0 +1,1 @@
+<?php return unserialize('a:1:{i:0;O:66:"Symfony\\Component\\Security\\Core\\Validator\\Constraints\\UserPassword":3:{s:7:"message";s:37:"Wrong value for your current password";s:7:"service";s:32:"security.validator.user_password";s:6:"groups";a:1:{i:0;s:7:"Default";}}}');

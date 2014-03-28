@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Troiswa\TestBundle\Entity\Commentaire;
+use Troiswa\TestBundle\Utilities\Slug;
 
 /**
  * News
@@ -93,17 +94,10 @@ class News
      */
     public function setTitre($titre)
     {
-        $this->setSlug($this->slugify($titre));
+        $this->setSlug(Slug::slugify($titre));
         $this->titre = $titre;
 
         return $this;
-    }
-
-    public function slugify($string)
-    {
-        $string=preg_replace('/\\W+/', '-', $string);
-        $string=strtolower(trim($string, '-'));
-        return $string;
     }
 
     /**

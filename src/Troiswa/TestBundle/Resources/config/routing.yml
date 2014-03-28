@@ -86,6 +86,10 @@ troiswa_test_user_get:
     pattern: /user/
     defaults: { _controller: TroiswaTestBundle:User:get }
 
+troiswa_test_password:
+    pattern: /admin/password/{id}/
+    defaults: { _controller: TroiswaTestBundle:Password:password }
+
 # ROLE ROUTING
 troiswa_test_role_liste:
     pattern: /admin/role/liste

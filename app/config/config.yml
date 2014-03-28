@@ -83,9 +83,12 @@ security:
                 target: /news/
             #http_basic:
             #    realm: "Accès restreint"
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
-    #access_control: 
-        #- { path: ^/admin, roles: ROLE_ADMIN }
+    access_control: 
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
     providers:
         #in_memory:

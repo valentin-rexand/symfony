@@ -5,7 +5,9 @@ namespace Troiswa\TestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Troiswa\TestBundle\Entity\User;
+use Troiswa\TestBundle\Entity\Password;
 use Troiswa\TestBundle\Form\UserType;
+use Troiswa\TestBundle\Form\PasswordType;
 use Troiswa\TestBundle\Form\AdminUserType;
 use Symfony\Component\HTTPFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -106,7 +108,7 @@ class UserController extends Controller
             $this->get('session')->getFlashBag()->add('notice', 'L\'utilisateur a été modifié');
             return $this->redirect($this->generateUrl('troiswa_test_news_liste'));
         }
-        return array('form' => $form->createView());
+        return array('form' => $form->createView(), 'user' => $user);
     }
 
     /**

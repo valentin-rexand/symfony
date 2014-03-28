@@ -366,37 +366,49 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/a')) {
-            if (0 === strpos($pathinfo, '/admin/role')) {
-                // troiswa_test_role_liste
-                if ($pathinfo === '/admin/role/liste') {
-                    return array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::listeAction',  '_route' => 'troiswa_test_role_liste',);
-                }
-
-                // troiswa_test_role_create
-                if (rtrim($pathinfo, '/') === '/admin/role/create') {
+            if (0 === strpos($pathinfo, '/admin')) {
+                // troiswa_test_password
+                if (0 === strpos($pathinfo, '/admin/password') && preg_match('#^/admin/password/(?P<id>[^/]++)/?$#s', $pathinfo, $matches)) {
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'troiswa_test_role_create');
+                        return $this->redirect($pathinfo.'/', 'troiswa_test_password');
                     }
 
-                    return array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::createAction',  '_route' => 'troiswa_test_role_create',);
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_password')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\PasswordController::passwordAction',));
                 }
 
-                // troiswa_test_role_update
-                if (preg_match('#^/admin/role/(?P<id>[^/]++)/update/?$#s', $pathinfo, $matches)) {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'troiswa_test_role_update');
+                if (0 === strpos($pathinfo, '/admin/role')) {
+                    // troiswa_test_role_liste
+                    if ($pathinfo === '/admin/role/liste') {
+                        return array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::listeAction',  '_route' => 'troiswa_test_role_liste',);
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_role_update')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::updateAction',));
-                }
+                    // troiswa_test_role_create
+                    if (rtrim($pathinfo, '/') === '/admin/role/create') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'troiswa_test_role_create');
+                        }
 
-                // troiswa_test_role_delete
-                if (preg_match('#^/admin/role/(?P<id>[^/]++)/delete/?$#s', $pathinfo, $matches)) {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'troiswa_test_role_delete');
+                        return array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::createAction',  '_route' => 'troiswa_test_role_create',);
                     }
 
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_role_delete')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::deleteAction',));
+                    // troiswa_test_role_update
+                    if (preg_match('#^/admin/role/(?P<id>[^/]++)/update/?$#s', $pathinfo, $matches)) {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'troiswa_test_role_update');
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_role_update')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::updateAction',));
+                    }
+
+                    // troiswa_test_role_delete
+                    if (preg_match('#^/admin/role/(?P<id>[^/]++)/delete/?$#s', $pathinfo, $matches)) {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'troiswa_test_role_delete');
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_role_delete')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\RoleController::deleteAction',));
+                    }
+
                 }
 
             }
