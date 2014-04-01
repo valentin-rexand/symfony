@@ -3,9 +3,9 @@ troiswa_test_homepage:
     pattern:  /hello/{name}/
     defaults: { _controller: TroiswaTestBundle:Default:index }
 
-troiswa_test_index:
-    pattern:  /
-    defaults: { _controller: TroiswaTestBundle:Default:accueil }
+#troiswa_test_index:
+#    pattern:  /
+#    defaults: { _controller: TroiswaTestBundle:Default:accueil }
 
 
 # NEWS ROUTING
@@ -14,7 +14,7 @@ troiswa_test_create:
     defaults: { _controller: TroiswaTestBundle:News:create }
 
 troiswa_test_news_liste:
-    pattern: /news/
+    pattern: /
     defaults: { _controller: TroiswaTestBundle:News:liste }
 
 troiswa_test_news_update:
@@ -24,6 +24,10 @@ troiswa_test_news_update:
 troiswa_test_news_delete:
     pattern: /admin/news/{id}/delete/
     defaults: { _controller: TroiswaTestBundle:News:delete }
+
+troiswa_test_news_user_list:
+    pattern: /news/user/{username}/
+    defaults: { _controller: TroiswaTestBundle:News:usernews }
 
 TroiswaTestBundle_news2:
         resource: "@TroiswaTestBundle/Resources/config/routing/news2.yml"

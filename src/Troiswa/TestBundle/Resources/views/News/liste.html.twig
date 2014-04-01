@@ -3,9 +3,11 @@
 {% block title %}TroiswaTestBundle:News:liste{% endblock %}
 
 {% block content %}
+	<div class="news_list">
+		<h2>Liste des news</h2>
 	{% for news in news_list %}
 		<div class="news">
-			<a href="{{ path('troiswa_test_news_get', {'id': news.slug}) }}"><h2>{{news.titre}}</h2></a>
+			<h3><a href="{{ path('troiswa_test_news_get', {'id': news.slug}) }}">{{news.titre}}</a></h3>
 			<p><em>date : <span class="color_news">{{news.date | date('d/m/Y')}}</span><br/>
 			auteur : <span class="color_news">{{news.auteur}}</span></em></p>
 			<p>{{news.texte}}</p>
@@ -20,5 +22,6 @@
 		<a href="{{ path('troiswa_test_create')}}">ajouter news</a>
 	</div>
 	{% endif %}
+	</div>
 {% endblock %}
 {# ceci est un commentaire #}

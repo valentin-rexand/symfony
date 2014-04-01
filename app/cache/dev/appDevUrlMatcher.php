@@ -144,15 +144,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_homepage')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        // troiswa_test_index
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'troiswa_test_index');
-            }
-
-            return array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\DefaultController::accueilAction',  '_route' => 'troiswa_test_index',);
-        }
-
         // troiswa_test_create
         if (rtrim($pathinfo, '/') === '/admin/news/create') {
             if (substr($pathinfo, -1) !== '/') {
@@ -163,7 +154,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // troiswa_test_news_liste
-        if (rtrim($pathinfo, '/') === '/news') {
+        if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
                 return $this->redirect($pathinfo.'/', 'troiswa_test_news_liste');
             }
@@ -193,6 +184,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/news')) {
+            // troiswa_test_news_user_list
+            if (0 === strpos($pathinfo, '/news/user') && preg_match('#^/news/user/(?P<username>[^/]++)/?$#s', $pathinfo, $matches)) {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'troiswa_test_news_user_list');
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'troiswa_test_news_user_list')), array (  '_controller' => 'Troiswa\\TestBundle\\Controller\\NewsController::usernewsAction',));
+            }
+
             if (0 === strpos($pathinfo, '/news2')) {
                 // news2
                 if (rtrim($pathinfo, '/') === '/news2') {

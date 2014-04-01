@@ -6,7 +6,7 @@
 	<div class="news">
 		<h2>{{news.titre}}</h2>
 		<p><em>Date : <span class="color_news">{{news.date | date('d/m/Y')}}</span><br/>
-		Auteur : <span class="color_news">{{news.auteur}}</span><br/>
+		Auteur : <span class="color_news news_auteur"><a href="{{ path('troiswa_test_news_user_list', {'username': news.auteur }) }}">{{news.auteur}}</a></span><br/>
 		Catégorie : <span class="color_news">{{news.category}}</span></em></p>
 		<p>{{news.texte}}</p>
 		{% if (is_granted ('ROLE_ADMIN')) or (is_granted ('ROLE_MODO')) %}

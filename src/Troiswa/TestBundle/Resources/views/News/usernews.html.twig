@@ -1,0 +1,37 @@
+{% extends "TroiswaTestBundle::layout.html.twig" %}
+
+{% block title %}TroiswaTestBundle:News:usernews{% endblock %}
+
+{% block content %}
+	<h2>{{ user.username }}</h2>
+	<div class="news_list news">
+		{% for news in user.news %}
+		<h3><a href="{{ path('troiswa_test_news_get', {'id': news.slug}) }}">{{news.titre}}</a></h3>
+		<p><em>Date : <span class="color_news">{{news.date | date('d/m/Y')}}</span><br/>
+		Auteur : <span class="color_news news_auteur"><a href="{{ path('troiswa_test_news_user_list', {'username': news.auteur.username}) }}">{{news.auteur}}</a></span><br/>
+		Catégorie : <span class="color_news">{{news.category}}</span></em></p>
+		{% endfor %}
+	</div>
+		
+	<div class="news commentaires_list">
+		<h3>Commentaires</h3>
+		<ul>
+			<li>
+				{% for commentaire in user.commentaires %}
+				<ul>
+					<li>
+						<p><em>Date : <span class="color_news">{{commentaire.date | date('d/m/Y')}}</span></em></p>
+					</li>
+					<li>
+						<p><em>Auteur : <span class="color_news comm_auteur"><a href="{{ path('troiswa_test_news_user_list', {'username': commentaire.news.auteur.username}) }}">{{commentaire.auteur}}</a></span></em></p>
+					</li>
+					<li>
+						<p><em>News : <span class="color_news"><a href="{{ path('troiswa_test_news_get', {'id': commentaire.news.slug}) }}">{{commentaire.news.titre}}</a></span></em></p>
+					</li>
+				</ul>
+				{% endfor %}
+			</li>
+		</ul>
+		<a href="{{ path('troiswa_test_news_liste')}}">retour news</a>
+	</div>
+{% endblock %}

@@ -125,4 +125,17 @@ class NewsController extends Controller
         $this->get('session')->getFlashBag()->add('notice', 'La news a été supprimée');
         return $this->redirect($this->generateUrl('troiswa_test_news_liste'));
     }
+
+    /**
+     *@Template()
+     */
+    public function usernewsAction(Request $request, $username)
+    {
+        $repo=$this->getDoctrine()->getRepository('TroiswaTestBundle:User');
+        $user=$repo->findOneByUsername($username);
+        if(!$user){
+            throw $this->createNotFoundException('L\'utilisateur est introuvable ou n\'existe pas');
+        }
+        return array('user'=>$user);
+    }
 }

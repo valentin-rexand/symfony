@@ -257,4 +257,9 @@ class News
     {
         return $this->slug;
     }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
 }
