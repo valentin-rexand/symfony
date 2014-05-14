@@ -22,7 +22,7 @@
 						<p><em>Date : <span class="color_news">{{commentaire.date | date('d/m/Y')}}</span></em></p>
 					</li>
 					<li>
-						<p><em>Auteur : <span class="color_news">{{commentaire.auteur}}</span></em></p>
+						<p><em>Auteur : <span class="color_news"><a href="{{ path('troiswa_test_news_user_list', {'username': commentaire.news.auteur.username}) }}">{{commentaire.auteur}}</a></span></em></p>
 					</li>
 					<li>
 						<p><span class="color_news">{{commentaire.texte}}</span></p>

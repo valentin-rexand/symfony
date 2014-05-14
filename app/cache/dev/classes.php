@@ -607,6 +607,7 @@ if (!$this->handlers) {
 $this->pushHandler(new StreamHandler('php://stderr', static::DEBUG));
 }
 if (!static::$timezone) {
+date_default_timezone_set('Europe/Paris');
 static::$timezone = new \DateTimeZone(date_default_timezone_get() ?:'UTC');
 }
 $record = array('message'=> (string) $message,'context'=> $context,'level'=> $level,'level_name'=> static::getLevelName($level),'channel'=> $this->name,'datetime'=> \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), static::$timezone)->setTimezone(static::$timezone),'extra'=> array(),

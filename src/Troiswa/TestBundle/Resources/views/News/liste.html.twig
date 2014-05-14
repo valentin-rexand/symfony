@@ -9,7 +9,7 @@
 		<div class="news">
 			<h3><a href="{{ path('troiswa_test_news_get', {'id': news.slug}) }}">{{news.titre}}</a></h3>
 			<p><em>date : <span class="color_news">{{news.date | date('d/m/Y')}}</span><br/>
-			auteur : <span class="color_news">{{news.auteur}}</span></em></p>
+			auteur : <span class="color_news"><a href="{{ path('troiswa_test_news_user_list', {'username': news.auteur }) }}">{{news.auteur}}</a></span></em></p>
 			<p>{{news.texte}}</p>
 			{% if is_granted ('ROLE_ADMIN') %}
 			<a href="{{ path('troiswa_test_news_update', {'id': news.id}) }}">modifier</a>
